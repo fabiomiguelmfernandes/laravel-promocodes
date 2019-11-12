@@ -18,7 +18,6 @@ class CreatePromocodesTable extends Migration
             $table->string('code', 32)->unique();
             $table->double('reward', 10, 2)->nullable();
             $table->integer('quantity')->nullable();
-            $table->integer('month')->nullable();
 
             $table->text('data')->nullable();
 
@@ -29,15 +28,13 @@ class CreatePromocodesTable extends Migration
         Schema::create(config('promocodes.relation_table', 'promocode_user'), function (Blueprint $table) {
             $table->unsignedInteger('user_id');
             $table->unsignedInteger('promocode_id');
-            $table->unsignedInteger('plan_id');
-
+            
             $table->timestamp('used_at');
 
             $table->primary(['user_id', 'promocode_id']);
+
             $table->foreign('user_id')->references('id')->on('users');
             $table->foreign('promocode_id')->references('id')->on(config('promocodes.table', 'promocodes'));
-            $table->softDeletes(); // <-- This will add a deleted_at field
-            $table->timeStamps();
         });
     }
 
