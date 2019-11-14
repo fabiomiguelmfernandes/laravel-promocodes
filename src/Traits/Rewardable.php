@@ -46,6 +46,7 @@ trait Rewardable
 
                 if (!is_null($promocode->quantity)) {
                     $promocode->quantity -= 1;
+                    $promocode->data = ['used'];
                     $promocode->save();
                 }
 
