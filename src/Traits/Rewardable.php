@@ -44,6 +44,9 @@ trait Rewardable
                     'plan_id' => $plan
                 ]);
 
+                $promocode->data = ['used'];
+                $promocode->save();
+
                 if (!is_null($promocode->quantity)) {
                     $promocode->quantity -= 1;
                     $promocode->save();
