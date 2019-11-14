@@ -147,7 +147,7 @@ class Promocodes
             throw new InvalidPromocodeException;
         }
 
-        if ($promocode->isExpired() || ($promocode->isDisposable() && $promocode->users()->exists()) || $promocode->isOverAmount()) {
+        if ($promocode->isUsed($code) || $promocode->isExpired() || ($promocode->isDisposable() && $promocode->users()->exists()) || $promocode->isOverAmount()) {
             return false;
         }
 

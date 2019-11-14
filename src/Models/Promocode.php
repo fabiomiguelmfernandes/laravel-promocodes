@@ -2,6 +2,7 @@
 
 namespace Gabievi\Promocodes\Models;
 
+use App\PromocodeUser;
 use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Model;
 
@@ -134,6 +135,19 @@ class Promocode extends Model
         return $this->expires_at ? Carbon::now()->gte($this->expires_at) : false;
     }
 
+    public function isUsed($code)
+    {
+        $promocode = \App\Promocode::where('code', $code)->get()->first();
+        if(!is_null($promocode)) {
+            $code = PromocodeUser::where('promocode_id', $promocode->id)->get()->first();
+            if(!is_null($code)) {
+                return true;
+            } else {
+                return false;
+            }
+        }
+        return true;
+    }
     /**
      * Check if code amount is over.
      *
