@@ -181,7 +181,7 @@ class Promocodes
                     'plan_id' => $plan
                 ]);
 
-                $promocode->status = 1;
+                $promocode->status = '1';
                 $promocode->save();
 
                 if (!is_null($promocode->quantity)) {
