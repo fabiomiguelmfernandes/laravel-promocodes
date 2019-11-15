@@ -88,7 +88,6 @@ class Promocodes
             $records[] = [
                 'code' => $code,
                 'reward' => $reward,
-                'data' => json_encode($data),
                 'expires_at' => $expires_in ? Carbon::now()->addDays($expires_in) : null,
                 'is_disposable' => $is_disposable,
                 'quantity' => $quantity,
