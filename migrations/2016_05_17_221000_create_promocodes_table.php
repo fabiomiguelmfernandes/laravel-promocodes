@@ -20,7 +20,7 @@ class CreatePromocodesTable extends Migration
             $table->integer('quantity')->nullable();
             $table->integer('month')->nullable();
 
-            $table->enum('status', [0, 1, 2, 3])->default(0);
+            $table->enum('status', [0, 1, 2, 3, 4])->default(0);
 
             $table->boolean('is_disposable')->default(false);
             $table->timestamp('expires_at')->nullable();
