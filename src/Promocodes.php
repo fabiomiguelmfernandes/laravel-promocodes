@@ -238,7 +238,7 @@ class Promocodes
 
         $promocode->expires_at = Carbon::now();
         $promocode->quantity = 0;
-
+        $promocode->status = '4';
         return $promocode->save();
     }
 
